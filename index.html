@@ -1,0 +1,2268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adapta Digital — Consultora de transformación digital para PyMEs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1E4D6B;
+  --navy-dark: #163851;
+  --navy-light: #2A6385;
+  --teal: #2FAF9A;
+  --teal-dark: #258F7F;
+  --teal-soft: #D8F0E8;
+  --teal-accent: #65D0B5;
+  --gray: #31353B;
+  --gray-light: #6B7280;
+  --gray-very-light: #F4F6F8;
+  --sand: #FAFBFC;
+  --border: #E5E7EB;
+  --white: #FFFFFF;
+  --coral: #C75740;
+  --coral-soft: #FDE5DD;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--gray);
+  background: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+
+/* ============== NAVBAR ============== */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 96px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center;
+  padding: 0 48px;
+  z-index: 1000;
+  transition: box-shadow 0.3s;
+}
+.navbar.scrolled { box-shadow: 0 2px 20px rgba(30, 77, 107, 0.08); }
+.navbar .logo {
+  height: 60px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.navbar .logo:hover { opacity: 0.8; }
+.navbar .logo img { height: 100%; width: auto; }
+.navbar .menu {
+  display: flex; gap: 4px; list-style: none;
+  margin-left: 40px; flex: 1;
+}
+.navbar .menu li a {
+  padding: 11px 16px;
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.navbar .menu li a:hover { background: var(--gray-very-light); color: var(--navy); }
+.navbar .menu li a.active { background: var(--gray-very-light); color: var(--navy); font-weight: 700; }
+.navbar .cta {
+  padding: 12px 24px;
+  background: var(--teal);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+  text-decoration: none;
+  display: inline-block;
+}
+.navbar .cta:hover { background: var(--teal-dark); transform: translateY(-1px); }
+
+/* ============== PAGES ============== */
+.page {
+  display: none;
+  min-height: calc(100vh - 96px);
+  padding-top: 96px;
+  animation: fadeIn 0.4s ease;
+}
+.page.active { display: block; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============== BASE ============== */
+section { padding: 80px 0; position: relative; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--teal-dark);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.page-header {
+  padding: 64px 0 40px;
+}
+.page-header .container { max-width: 1000px; }
+.page-header h1 {
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+}
+.page-header h1 span { color: var(--teal-dark); }
+.page-header p {
+  font-size: 18px;
+  color: var(--gray-light);
+  line-height: 1.55;
+  max-width: 780px;
+}
+
+.title-decor {
+  width: 56px; height: 4px;
+  background: var(--teal);
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  margin-bottom: 40px;
+  max-width: 900px;
+}
+.section-title h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+  margin-bottom: 12px;
+}
+.section-title h2 span { color: var(--teal-dark); }
+.section-title p {
+  font-size: 16px;
+  color: var(--gray-light);
+  line-height: 1.55;
+}
+
+/* ============== HERO ============== */
+.hero {
+  position: relative;
+  height: calc(100vh - 96px);
+  min-height: 620px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('img/banner_home_hero.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(115deg, rgba(30, 77, 107, 0.9) 0%, rgba(30, 77, 107, 0.55) 55%, rgba(30, 77, 107, 0.1) 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 48px;
+  color: white;
+}
+.hero-eyebrow {
+  display: inline-block;
+  padding: 8px 18px;
+  background: rgba(47, 175, 154, 0.2);
+  border: 1px solid rgba(47, 175, 154, 0.4);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--teal-accent);
+  margin-bottom: 32px;
+}
+.hero h1 {
+  font-size: 76px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+  max-width: 940px;
+}
+.hero h1 span { color: var(--teal-accent); }
+.hero .lead {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.55;
+  max-width: 680px;
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary, .btn-secondary {
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+.btn-primary {
+  background: var(--teal);
+  color: white;
+}
+.btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(47, 175, 154, 0.4); }
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+}
+.btn-secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: white; }
+
+/* ============== 3 USPs ============== */
+.usps { padding: 72px 0; background: var(--sand); border-bottom: 1px solid var(--border); }
+.usps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.usp {
+  padding: 36px 32px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: all 0.25s;
+}
+.usp:hover {
+  border-color: var(--teal);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(30, 77, 107, 0.08);
+}
+.usp-icon {
+  width: 56px; height: 56px;
+  background: var(--teal-soft);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--teal-dark);
+  margin-bottom: 20px;
+}
+.usp-icon svg { width: 28px; height: 28px; }
+.usp h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+.usp p { color: var(--gray-light); font-size: 14px; line-height: 1.55; }
+
+/* ============== 4 CTA BANNERS ============== */
+.cta-grid-section { padding: 88px 0; background: white; }
+.cta-grid-section .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+.cta-card {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+.cta-card:hover { transform: translateY(-4px); }
+.cta-card img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+.cta-card:hover img { transform: scale(1.05); }
+.cta-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(30, 77, 107, 0.92) 0%, rgba(30, 77, 107, 0.3) 55%, transparent 100%);
+}
+.cta-card-content {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 36px;
+  color: white;
+  z-index: 1;
+}
+.cta-card-content .cat {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: var(--teal-accent);
+  margin-bottom: 8px;
+}
+.cta-card-content h3 {
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+.cta-card-content p {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.cta-card-content .arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--teal-accent);
+}
+
+/* ============== DEFINITION HOME ============== */
+.definition-home { padding: 88px 0; background: var(--gray-very-light); text-align: center; }
+.definition-home .content { max-width: 900px; margin: 0 auto; }
+.definition-home h2 {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+.definition-home h2 span { color: var(--teal-dark); }
+.definition-home p { font-size: 17px; color: var(--gray-light); line-height: 1.6; }
+
+/* ============== TWO COL ============== */
+.two-col {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.about-text h3 { font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 16px; letter-spacing: -0.4px; }
+.about-text p { color: var(--gray); font-size: 15px; margin-bottom: 14px; line-height: 1.65; }
+
+/* ============== TEAM ============== */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.team-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 40px 32px;
+  text-align: center;
+  transition: all 0.25s;
+}
+.team-card:hover {
+  border-color: var(--teal);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(30, 77, 107, 0.08);
+}
+.team-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+  margin: 0 auto 20px;
+  display: flex; align-items: center; justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 32px;
+  letter-spacing: -1px;
+}
+.team-role {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--teal-dark);
+  margin-bottom: 6px;
+}
+.team-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+.team-funcs { font-size: 14px; color: var(--gray-light); line-height: 1.55; }
+
+/* ============== STATS BOX ============== */
+.stats-box {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+  border-radius: 24px;
+  padding: 48px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  margin-top: 56px;
+}
+.stats-box::before {
+  content: '';
+  position: absolute; top: -50%; right: -20%;
+  width: 60%; height: 200%;
+  background: radial-gradient(circle, var(--teal) 0%, transparent 65%);
+  opacity: 0.2;
+}
+.stats-box h3 {
+  font-size: 13px;
+  color: var(--teal-accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  position: relative;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  position: relative;
+}
+.stat-num {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+.stat-desc { color: rgba(255, 255, 255, 0.8); font-size: 14px; line-height: 1.4; }
+
+/* ============== VALUES ============== */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.value {
+  padding: 36px 32px;
+  background: white;
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--teal);
+  border-radius: 16px;
+}
+.value-icon {
+  width: 48px; height: 48px;
+  background: var(--teal-soft);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--teal-dark);
+  margin-bottom: 18px;
+}
+.value-icon svg { width: 24px; height: 24px; }
+.value h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+.value p { color: var(--gray-light); font-size: 14px; line-height: 1.55; }
+
+/* ============== PROBLEM CARDS ============== */
+.problem-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.problem-card {
+  background: white;
+  border-radius: 16px;
+  padding: 32px 28px;
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.problem-card .num {
+  position: absolute;
+  top: 20px; right: 24px;
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--gray-very-light);
+  line-height: 1;
+}
+.problem-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+  position: relative;
+}
+.problem-card p {
+  color: var(--gray-light);
+  font-size: 13px;
+  line-height: 1.55;
+  position: relative;
+}
+
+/* ============== QUOTE PENDO ============== */
+.quote-block {
+  background: white;
+  border-left: 5px solid var(--teal);
+  border-radius: 0 16px 16px 0;
+  padding: 32px 40px;
+  box-shadow: 0 4px 20px rgba(30, 77, 107, 0.06);
+  margin-top: 32px;
+}
+.quote-block .quote-eyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--teal-dark);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.quote-block .quote-text {
+  font-size: 20px;
+  color: var(--gray);
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.quote-block .quote-source { font-size: 13px; color: var(--gray-light); font-style: italic; }
+
+/* ============== HIGHLIGHT BANNER (En la era de la IA) ============== */
+.highlight-banner {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+  color: white;
+  border-radius: 20px;
+  padding: 40px 48px;
+  margin-top: 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.highlight-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 60%; height: 200%;
+  background: radial-gradient(circle, var(--teal) 0%, transparent 65%);
+  opacity: 0.2;
+}
+.highlight-banner h3 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+  position: relative;
+}
+.highlight-banner h3 span { color: var(--teal-accent); }
+
+/* ============== USUARIO OBJETIVO ============== */
+.user-table {
+  width: 100%;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.user-table .row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  border-bottom: 1px solid var(--border);
+}
+.user-table .row:last-child { border-bottom: none; }
+.user-table .cell {
+  padding: 20px 28px;
+  font-size: 14px;
+}
+.user-table .cell.label {
+  background: var(--gray-very-light);
+  font-weight: 600;
+  color: var(--navy);
+}
+.user-table .cell.value {
+  color: var(--gray);
+  line-height: 1.55;
+}
+
+/* ============== JTBD ============== */
+.jtbd-quote {
+  background: linear-gradient(135deg, var(--teal-soft) 0%, white 100%);
+  border-left: 6px solid var(--teal);
+  border-radius: 0 24px 24px 0;
+  padding: 48px 56px;
+  position: relative;
+}
+.jtbd-quote::before {
+  content: '"';
+  position: absolute;
+  top: -14px; left: 32px;
+  font-size: 100px;
+  color: var(--teal);
+  font-family: Georgia, serif;
+  line-height: 1;
+  font-weight: 900;
+  opacity: 0.4;
+}
+.jtbd-quote .eyebrow-jtbd {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--teal-dark);
+  font-weight: 700;
+  margin-bottom: 14px;
+  position: relative;
+}
+.jtbd-quote .quote-body {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.45;
+  font-style: italic;
+  position: relative;
+  margin-bottom: 14px;
+}
+.jtbd-quote .quote-note { font-size: 14px; color: var(--gray-light); position: relative; font-weight: 500; }
+.jtbd-quote .quote-note strong { color: var(--navy); }
+
+/* ============== PROMESAS ============== */
+.promesas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.promesa {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.2s;
+}
+.promesa:hover {
+  border-color: var(--teal);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(30, 77, 107, 0.06);
+}
+.promesa-num {
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: white;
+  font-weight: 800;
+  font-size: 17px;
+  margin-bottom: 16px;
+}
+.promesa h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+.promesa p { color: var(--gray-light); font-size: 14px; line-height: 1.55; }
+
+/* ============== VERTICALES ============== */
+.verticales-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.vertical {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px 32px;
+  transition: all 0.25s;
+}
+.vertical:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(30, 77, 107, 0.1);
+}
+.vertical-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--teal-soft);
+  color: var(--teal-dark);
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 100px;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+}
+.vertical h4 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+.vertical p { color: var(--gray-light); font-size: 14px; line-height: 1.55; }
+
+/* ============== INSIGHT (orden IA-first) ============== */
+.insight {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+  color: white;
+  border-radius: 20px;
+  padding: 44px 48px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 32px;
+}
+.insight::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 60%; height: 200%;
+  background: radial-gradient(circle, var(--teal) 0%, transparent 65%);
+  opacity: 0.2;
+}
+.insight .insight-eyebrow {
+  color: var(--teal-accent);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 12px;
+  position: relative;
+}
+.insight h4 {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  position: relative;
+  letter-spacing: -0.5px;
+}
+.insight ol { list-style: none; counter-reset: order; position: relative; }
+.insight ol li {
+  counter-increment: order;
+  padding: 12px 0 12px 52px;
+  position: relative;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.insight ol li:last-child { border-bottom: none; }
+.insight ol li::before {
+  content: counter(order);
+  position: absolute;
+  left: 0; top: 10px;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: white;
+  display: flex;
+  align-items: center; justify-content: center;
+  font-weight: 800;
+  font-size: 13px;
+}
+.insight ol li strong { color: var(--teal-accent); font-weight: 700; }
+
+/* ============== FLOW STEPS ============== */
+.flow-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+.flow-step {
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 18px;
+  text-align: center;
+  position: relative;
+  transition: all 0.25s;
+}
+.flow-step:hover { border-color: var(--teal); transform: translateY(-3px); }
+.flow-step .step-num {
+  width: 40px; height: 40px;
+  background: var(--teal);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center; justify-content: center;
+  margin: 0 auto 14px;
+  font-weight: 800;
+  font-size: 17px;
+}
+.flow-step .step-title {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 14px;
+  margin-bottom: 4px;
+  letter-spacing: -0.2px;
+}
+.flow-step .step-meta { font-size: 11px; color: var(--gray-light); }
+
+/* ============== PRICING TABLE ============== */
+.pricing-table {
+  width: 100%;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  border-collapse: collapse;
+}
+.pricing-table thead { background: var(--navy); }
+.pricing-table th {
+  padding: 16px 22px;
+  text-align: left;
+  color: white;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.pricing-table td {
+  padding: 16px 22px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  vertical-align: middle;
+}
+.pricing-table tr:nth-child(even) td { background: var(--sand); }
+.pricing-table .source-name { font-weight: 700; color: var(--navy); }
+.pricing-table .pill {
+  display: inline-block;
+  padding: 5px 12px;
+  background: var(--teal-soft);
+  color: var(--teal-dark);
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.pricing-table .pill.recurring { background: #FEF3C7; color: #92400E; }
+
+.cost-box {
+  background: linear-gradient(135deg, var(--gray-very-light) 0%, white 100%);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-top: 24px;
+}
+.cost-box h4 {
+  color: var(--teal-dark);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.cost-box p { color: var(--gray); font-size: 14px; line-height: 1.6; }
+
+/* ============== DASHBOARDS ============== */
+.dashboard-container {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(30, 77, 107, 0.04);
+}
+.dashboard-container h4 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+.dashboard-container img {
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  width: 100%;
+}
+
+/* ============== ACTIVITIES ============== */
+.activities {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+.activity {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 24px;
+  transition: all 0.2s;
+}
+.activity:hover { border-color: var(--teal); transform: translateY(-3px); }
+.activity-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background: var(--teal-soft);
+  color: var(--teal-dark);
+  display: flex;
+  align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.activity-icon svg { width: 24px; height: 24px; }
+.activity h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+  letter-spacing: -0.2px;
+}
+.activity p { color: var(--gray-light); font-size: 13px; line-height: 1.55; }
+
+/* ============== ESTRATEGIA ============== */
+.supuestos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.supuesto {
+  background: white;
+  border-radius: 16px;
+  padding: 32px 28px;
+  border: 1px solid var(--border);
+  position: relative;
+}
+.supuesto-num {
+  position: absolute;
+  top: 24px; right: 28px;
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--gray-very-light);
+  line-height: 1;
+}
+.supuesto .supuesto-label {
+  color: var(--teal-dark);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.supuesto h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 18px;
+  line-height: 1.35;
+}
+.supuesto .validation {
+  font-size: 12px;
+  color: var(--gray-light);
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  line-height: 1.55;
+}
+.supuesto .validation strong { color: var(--navy); }
+
+.decisiones {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.decision {
+  background: white;
+  border-radius: 20px;
+  padding: 36px 28px;
+  border-top: 6px solid var(--teal);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.decision-num {
+  font-size: 12px;
+  color: var(--teal-dark);
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.decision h4 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 14px;
+  letter-spacing: -0.3px;
+  line-height: 1.25;
+}
+.decision p {
+  color: var(--gray);
+  font-size: 13px;
+  margin-bottom: 20px;
+  line-height: 1.55;
+}
+.decision-trade {
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.decision-trade div { margin-bottom: 6px; }
+.decision-trade .renuncia { color: var(--coral); font-weight: 700; text-transform: uppercase; font-size: 10px; letter-spacing: 1px; }
+.decision-trade .ganancia { color: var(--teal-dark); font-weight: 700; text-transform: uppercase; font-size: 10px; letter-spacing: 1px; }
+
+/* Timeline */
+.timeline {
+  padding: 40px 48px;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+}
+.timeline h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+  text-align: center;
+}
+.timeline .subtitle {
+  text-align: center;
+  color: var(--gray-light);
+  font-size: 13px;
+  margin-bottom: 40px;
+}
+.timeline-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+}
+.timeline-row::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal) 0%, var(--border) 30%);
+}
+.tl-item {
+  text-align: center;
+  position: relative;
+  padding: 0 12px;
+}
+.tl-dot {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid var(--border);
+  margin: 0 auto 14px;
+  display: flex;
+  align-items: center; justify-content: center;
+  position: relative;
+  z-index: 1;
+  font-weight: 800;
+  font-size: 11px;
+  color: var(--gray-light);
+}
+.tl-item.active .tl-dot {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: white;
+  box-shadow: 0 0 0 5px rgba(47, 175, 154, 0.15);
+}
+.tl-year {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gray-light);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.tl-item.active .tl-year { color: var(--teal-dark); }
+.tl-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.tl-desc {
+  font-size: 11px;
+  color: var(--gray-light);
+  line-height: 1.5;
+  padding: 0 6px;
+}
+
+.evoluciones {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.evolucion {
+  background: white;
+  border-radius: 20px;
+  padding: 32px 26px;
+  border: 1px solid var(--border);
+  transition: all 0.25s;
+}
+.evolucion:hover {
+  border-color: var(--teal);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(30, 77, 107, 0.08);
+}
+.evolucion-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--teal-soft);
+  color: var(--teal-dark);
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+.evolucion h4 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+}
+.evolucion p {
+  color: var(--gray-light);
+  font-size: 13px;
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+.evolucion .change {
+  padding-top: 16px;
+  border-top: 1px dashed var(--border);
+  font-size: 11px;
+  color: var(--gray-light);
+  line-height: 1.55;
+}
+.evolucion .change strong {
+  display: block;
+  color: var(--navy);
+  margin-bottom: 4px;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ============== COMPROMISO ============== */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.pillar {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.25s;
+}
+.pillar:hover { border-color: var(--teal); transform: translateY(-3px); }
+.pillar.featured {
+  grid-column: span 4;
+  background: linear-gradient(135deg, var(--coral-soft) 0%, white 100%);
+  border: 2px solid var(--coral);
+  text-align: left;
+  padding: 40px 44px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: 8px;
+}
+.pillar.featured::before {
+  content: '★ DESTACADO';
+  position: absolute;
+  top: 20px; right: 24px;
+  background: var(--coral);
+  color: white;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 100px;
+  letter-spacing: 1.5px;
+}
+.pillar-icon {
+  width: 60px; height: 60px;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center; justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+.pillar.featured .pillar-icon {
+  margin: 0;
+  background: linear-gradient(135deg, var(--coral) 0%, #E88968 100%);
+}
+.pillar-icon svg { width: 28px; height: 28px; }
+.pillar h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+.pillar p { font-size: 13px; color: var(--gray-light); line-height: 1.5; }
+.pillar.featured h4 { font-size: 22px; margin-bottom: 12px; }
+.pillar.featured p { font-size: 14px; line-height: 1.55; margin-bottom: 16px; }
+.pillar-quote {
+  background: white;
+  border-left: 4px solid var(--coral);
+  padding: 18px 22px;
+  border-radius: 0 12px 12px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--coral);
+  font-style: italic;
+  line-height: 1.45;
+}
+.pillar-content { flex: 1; }
+
+.piso-etico {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+  color: white;
+  border-radius: 24px;
+  padding: 56px 48px;
+  margin-top: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.piso-etico::before {
+  content: '';
+  position: absolute;
+  bottom: -50%; right: -20%;
+  width: 60%; height: 200%;
+  background: radial-gradient(circle, var(--teal) 0%, transparent 65%);
+  opacity: 0.22;
+}
+.piso-etico .content { position: relative; max-width: 900px; }
+.piso-etico h3 { font-size: 28px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.5px; }
+.piso-etico .intro { color: rgba(255, 255, 255, 0.85); font-size: 15px; margin-bottom: 32px; }
+.piso-etico ol { list-style: none; counter-reset: q; }
+.piso-etico ol li {
+  counter-increment: q;
+  padding: 18px 0 18px 64px;
+  position: relative;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+.piso-etico ol li:last-child { border-bottom: none; }
+.piso-etico ol li::before {
+  content: counter(q);
+  position: absolute;
+  left: 0; top: 16px;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: white;
+  display: flex;
+  align-items: center; justify-content: center;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+/* ============== CONTACTO ============== */
+.contact-box {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+  color: white;
+  border-radius: 32px;
+  padding: 72px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.contact-box::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 60%; height: 160%;
+  background: radial-gradient(circle, var(--teal) 0%, transparent 65%);
+  opacity: 0.22;
+}
+.contact-box .eyebrow-c {
+  color: var(--teal-accent);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 18px;
+  position: relative;
+}
+.contact-box h2 {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+  position: relative;
+  color: white;
+}
+.contact-box h2 span { color: var(--teal-accent); }
+.contact-box p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 17px;
+  max-width: 580px;
+  margin: 0 auto 36px;
+  position: relative;
+  line-height: 1.55;
+}
+.contact-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 40px;
+  background: var(--teal);
+  color: white;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.25s;
+}
+.contact-cta:hover {
+  background: var(--teal-accent);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(101, 208, 181, 0.4);
+}
+.contact-meta {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 48px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  position: relative;
+  flex-wrap: wrap;
+}
+.contact-meta div { display: flex; align-items: center; gap: 10px; }
+
+/* ============== FOOTER ============== */
+footer {
+  background: var(--navy-dark);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 32px 0;
+  text-align: center;
+  font-size: 13px;
+}
+footer strong { color: var(--teal-accent); }
+
+/* ============== RESPONSIVE ============== */
+@media (max-width: 968px) {
+  .navbar { padding: 0 20px; height: 80px; }
+  .navbar .logo { height: 44px; }
+  .navbar .menu { display: none; }
+  .container { padding: 0 24px; }
+  section { padding: 56px 0; }
+  .page { padding-top: 80px; }
+  .page-header { padding: 40px 0 24px; }
+  .page-header h1 { font-size: 34px; }
+  .hero { height: calc(100vh - 80px); min-height: 520px; }
+  .hero h1 { font-size: 44px; }
+  .hero .lead { font-size: 16px; }
+  .section-title h2 { font-size: 26px; }
+  .usps-grid, .team-grid, .values-grid, .problem-cards, .verticales-grid,
+  .supuestos, .decisiones, .evoluciones, .pillars { grid-template-columns: 1fr; }
+  .cta-grid-section .grid { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; gap: 32px; }
+  .stats-grid { grid-template-columns: 1fr; gap: 24px; }
+  .promesas { grid-template-columns: 1fr; }
+  .flow-steps { grid-template-columns: repeat(2, 1fr); }
+  .timeline-row { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .timeline-row::before { display: none; }
+  .contact-box { padding: 40px 24px; }
+  .contact-box h2 { font-size: 28px; }
+  .pillar.featured { grid-column: span 1; padding: 32px 28px; flex-direction: column; align-items: flex-start; }
+  .jtbd-quote { padding: 32px 28px; }
+  .jtbd-quote .quote-body { font-size: 17px; }
+  .user-table .row { grid-template-columns: 1fr; }
+  .highlight-banner h3 { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============== NAVBAR ============== -->
+<nav class="navbar" id="navbar">
+  <a onclick="showPage('home')" class="logo"><img src="img/logo.png" alt="Adapta Digital"></a>
+  <ul class="menu">
+    <li><a onclick="showPage('home')" class="nav-link" data-page="home">Inicio</a></li>
+    <li><a onclick="showPage('nosotros')" class="nav-link" data-page="nosotros">Nosotros</a></li>
+    <li><a onclick="showPage('servicios')" class="nav-link" data-page="servicios">Servicios</a></li>
+    <li><a onclick="showPage('metodo')" class="nav-link" data-page="metodo">Método</a></li>
+    <li><a onclick="showPage('operacion')" class="nav-link" data-page="operacion">Operación</a></li>
+    <li><a onclick="showPage('estrategia')" class="nav-link" data-page="estrategia">Estrategia</a></li>
+    <li><a onclick="showPage('compromiso')" class="nav-link" data-page="compromiso">Compromiso</a></li>
+  </ul>
+  <a onclick="showPage('contacto')" class="cta">Hablemos</a>
+</nav>
+
+<!-- ==================================================================== -->
+<!-- ============================ PAGE: HOME ============================ -->
+<!-- ==================================================================== -->
+<main class="page active" id="page-home">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Consultora boutique · Mar del Plata</span>
+      <h1>Tecnología que tu PyME <span>realmente usa</span></h1>
+      <p class="lead">Entendemos tu negocio. Evaluamos todas las opciones del mercado. Acompañamos al equipo hasta que la solución se adopta de verdad.</p>
+      <div class="hero-actions">
+        <a onclick="showPage('servicios')" class="btn-primary">
+          Ver nuestros servicios
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a onclick="showPage('contacto')" class="btn-secondary">Hablemos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 USPs -->
+  <section class="usps">
+    <div class="container">
+      <div class="usps-grid">
+        <div class="usp">
+          <div class="usp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <h3>Diagnóstico inmersivo</h3>
+          <p>Entramos al negocio antes de proponer nada. Hablamos con la gente, miramos los procesos reales, entendemos las restricciones culturales del cliente.</p>
+        </div>
+        <div class="usp">
+          <div class="usp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Imparcialidad estructural</h3>
+          <p>Cero acuerdos comerciales con proveedores. Recomendamos lo que le sirve al cliente, no lo que más nos paga a nosotros.</p>
+        </div>
+        <div class="usp">
+          <div class="usp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Acompañamiento del cambio</h3>
+          <p>Nos quedamos hasta que la gente use lo implementado. La adopción es lo que garantiza el impacto real del proyecto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 CTA BANNERS -->
+  <section class="cta-grid-section">
+    <div class="container">
+      <div class="section-title">
+        <div class="title-decor"></div>
+        <span class="eyebrow">Explorá el modelo</span>
+        <h2>Un negocio pensado <span>con criterio</span></h2>
+        <p>Cada pieza del modelo tiene una razón de ser y una decisión detrás. Estas son las áreas donde te mostramos cómo trabajamos.</p>
+      </div>
+      <div class="grid">
+        <a onclick="showPage('servicios')" class="cta-card">
+          <img src="img/banner_servicios.png" alt="Servicios">
+          <div class="cta-card-content">
+            <div class="cat">Servicios</div>
+            <h3>Qué hacemos</h3>
+            <p>Propuesta de valor, los tres frentes verticales y el orden de evaluación IA-first.</p>
+            <div class="arrow">Ver servicios →</div>
+          </div>
+        </a>
+        <a onclick="showPage('metodo')" class="cta-card">
+          <img src="img/banner_metodo.png" alt="Método">
+          <div class="cta-card-content">
+            <div class="cat">Método</div>
+            <h3>Cómo trabajamos</h3>
+            <p>El proceso paso a paso y el modelo de ingresos por valor, no por hora.</p>
+            <div class="arrow">Ver método →</div>
+          </div>
+        </a>
+        <a onclick="showPage('estrategia')" class="cta-card">
+          <img src="img/banner_estrategia.png" alt="Estrategia">
+          <div class="cta-card-content">
+            <div class="cat">Estrategia</div>
+            <h3>Cómo crecemos</h3>
+            <p>Supuestos, decisiones estratégicas con trade-offs y visión a futuro.</p>
+            <div class="arrow">Ver estrategia →</div>
+          </div>
+        </a>
+        <a onclick="showPage('compromiso')" class="cta-card">
+          <img src="img/banner_compromiso.png" alt="Compromiso">
+          <div class="cta-card-content">
+            <div class="cat">Compromiso</div>
+            <h3>Nuestros principios</h3>
+            <p>Los cinco frentes éticos y las tres preguntas que guían cada decisión.</p>
+            <div class="arrow">Ver compromiso →</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Definition -->
+  <section class="definition-home">
+    <div class="container">
+      <div class="content">
+        <span class="eyebrow">En una frase</span>
+        <h2>No vendemos software. <span>Vendemos criterio experto</span></h2>
+        <p>Adapta Digital es una consultora de transformación digital orientada a PyMEs no tecnológicas, con base en Mar del Plata. Nos posicionamos como interlocutor técnico-comercial imparcial: entramos al negocio del cliente, identificamos sus procesos críticos, evaluamos todas las opciones del mercado y recomendamos la que más le conviene, sin acuerdos comerciales con proveedores.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================================================================== -->
+<!-- =========================== PAGE: NOSOTROS ========================= -->
+<!-- ==================================================================== -->
+<main class="page" id="page-nosotros">
+
+  <div class="page-header">
+    <div class="container">
+      <div class="title-decor"></div>
+      <span class="eyebrow">Nosotros</span>
+      <h1>Un equipo de tres, <span>alineado alrededor del cliente</span></h1>
+      <p>Tres socios fundadores que cubren procesos, tecnología y cambio. Estructura plana, decisiones por consenso, cada uno con visión completa del cliente.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="two-col">
+        <div class="about-text">
+          <h3>Cubrimos toda la cadena de valor de punta a punta</h3>
+          <p>Cada socio es dueño de su eje pero las decisiones grandes se toman entre los tres por consenso. El equipo cubre todo el recorrido del cliente sin pasar el trabajo de una persona a otra como si fuera una cadena de oficina.</p>
+          <p>Eso evita que se pierda información en el camino y mantiene a cada socio con visión completa de qué le está pasando al cliente. Estructura plana. Cero jerarquía burocrática.</p>
+          <p>Trabajamos en modalidad híbrida con base en Mar del Plata. Las visitas presenciales al cliente son parte del producto: la inmersión profunda no se puede hacer 100 % remota.</p>
+        </div>
+        <div class="stats-box" style="margin-top: 0;">
+          <h3>Nuestro compromiso en números</h3>
+          <div class="stats-grid" style="grid-template-columns: 1fr;">
+            <div>
+              <div class="stat-num">0 %</div>
+              <div class="stat-desc">Acuerdos comerciales con proveedores</div>
+            </div>
+            <div>
+              <div class="stat-num">1 día</div>
+              <div class="stat-desc">Por semana protegido para I+D por socio</div>
+            </div>
+            <div>
+              <div class="stat-num">100 %</div>
+              <div class="stat-desc">De proyectos con acompañamiento post-implementación</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title" style="margin-top: 96px;">
+        <span class="eyebrow">El equipo</span>
+        <h2>Tres roles complementarios</h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">P</div>
+          <div class="team-role">Socio 1</div>
+          <div class="team-name">Procesos y Negocio</div>
+          <div class="team-funcs">Analista + Product Manager. Diagnóstico inmersivo, mapeo de procesos, definición de requerimientos, vínculo comercial con el cliente.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">T</div>
+          <div class="team-role">Socio 2</div>
+          <div class="team-name">Tecnología, IA e I+D</div>
+          <div class="team-funcs">Tech Lead + AI Engineer. Evaluación técnica, prototipado con agentes de IA, configuración de enlatados, vigilancia tecnológica.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">C</div>
+          <div class="team-role">Socio 3</div>
+          <div class="team-name">Cambio y Personas</div>
+          <div class="team-funcs">Acompañamiento humano de la transformación, diseño de capacitaciones, gestión del cambio, cultura interna del equipo.</div>
+        </div>
+      </div>
+
+      <div class="section-title" style="margin-top: 96px;">
+        <span class="eyebrow">Cultura organizacional</span>
+        <h2>Tres valores <span>construidos desde el día uno</span></h2>
+        <p>La cultura se construye desde el día uno. Una empresa puede tener la mejor estrategia, pero si la cultura no la sostiene, la estrategia fracasa.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>Imparcialidad e independencia</h4>
+          <p>La consultora se debe al cliente, no a sus proveedores. Cuando hay duda entre dos soluciones, gana la que sirve más al cliente.</p>
+        </div>
+        <div class="value">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h4>Inmersión profunda</h4>
+          <p>No proponemos sin haber hablado con la gente que usará las herramientas. El criterio profundo es lo que justifica nuestro precio.</p>
+        </div>
+        <div class="value">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          </div>
+          <h4>Aprendizaje continuo e I+D</h4>
+          <p>Un día semanal protegido por socio para vigilancia tecnológica. El conocimiento actualizado es nuestro principal activo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================================================================== -->
+<!-- ========================== PAGE: SERVICIOS ========================= -->
+<!-- ==================================================================== -->
+<main class="page" id="page-servicios">
+
+  <div class="page-header">
+    <div class="container">
+      <div class="title-decor"></div>
+      <span class="eyebrow">Servicios</span>
+      <h1>Resolvemos un problema concreto <span>del tejido PyME</span></h1>
+      <p>Las PyMEs no tecnológicas saben que necesitan modernizarse, pero no tienen quién les diga qué hacer. Ahí es donde nos paramos.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">El problema</span>
+        <h2>Tres causas estructurales</h2>
+        <p>La mayoría de las PyMEs no tecnológicas funciona con planillas de Excel que se rompen, pedidos por WhatsApp que se pierden y procesos que viven en la cabeza de una sola persona.</p>
+      </div>
+      <div class="problem-cards">
+        <div class="problem-card">
+          <div class="num">01</div>
+          <h3>Sin perfil técnico interno</h3>
+          <p>No hay nadie en la empresa que traduzca las necesidades del negocio en oferta tecnológica.</p>
+        </div>
+        <div class="problem-card">
+          <div class="num">02</div>
+          <h3>Desconocen las alternativas</h3>
+          <p>Saben que algo se puede mejorar, pero no qué herramientas existen ni cuál realmente les sirve.</p>
+        </div>
+        <div class="problem-card">
+          <div class="num">03</div>
+          <h3>Proveedores sesgados</h3>
+          <p>Los que sí las atienden tienen sesgo natural hacia la solución que ellos mismos comercializan.</p>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <div class="quote-eyebrow">Por qué este problema importa más que nunca</div>
+        <div class="quote-text">"Hasta el 80 % de las funcionalidades del software empresarial es raramente o nunca utilizado, y casi la mitad del software que las empresas compran termina sin uso real."</div>
+        <div class="quote-source">— Pendo, <em>The Hidden Cost of Bad Software</em> (2025)</div>
+      </div>
+
+      <div class="highlight-banner">
+        <h3>En la era de la IA, construir software es cada vez más accesible.<br><span>Lo escaso es saber qué construir y lograr que se use</span></h3>
+      </div>
+
+      <div class="section-title" style="margin-top: 96px;">
+        <span class="eyebrow">Usuario objetivo</span>
+        <h2>Para quién trabajamos</h2>
+      </div>
+      <div class="user-table">
+        <div class="row">
+          <div class="cell label">Tamaño</div>
+          <div class="cell value">PyMEs con entre 5 y 50 personas en niveles de toma de decisión. La plantilla total puede ser mayor: el criterio no es cantidad de empleados sino complejidad de los procesos de decisión.</div>
+        </div>
+        <div class="row">
+          <div class="cell label">Geografía</div>
+          <div class="cell value">Mar del Plata como piloto inicial. El modelo está pensado para amplificarse a otras regiones y eventualmente a otros países de habla hispana.</div>
+        </div>
+        <div class="row">
+          <div class="cell label">Estructura</div>
+          <div class="cell value">Sin área de sistemas formal · Con dueño/a comprometido/a con modernizarse.</div>
+        </div>
+        <div class="row">
+          <div class="cell label">Rubros foco</div>
+          <div class="cell value">Comercio retail · Industria (manufactura, metalúrgica, alimenticia, textil) · Servicios profesionales · Salud privada de baja complejidad · Gastronomía · Servicios técnicos · eCommerce mediano.</div>
+        </div>
+        <div class="row">
+          <div class="cell label">Doble vínculo</div>
+          <div class="cell value">Comercial con el dueño o gerente · Operativo con los referentes de cada área (ventas, administración, depósito, atención al público).</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 96px;">
+        <div class="jtbd-quote">
+          <div class="eyebrow-jtbd">Job to be done — lo que el cliente realmente nos contrata</div>
+          <div class="quote-body">Ayudame a saber qué tengo que hacer para que mi empresa funcione mejor, sin que tenga que entender de tecnología, sin que me vendan algo que no me sirve, y asegurándote de que mi gente realmente lo use después.</div>
+          <div class="quote-note">Cubrimos las tres tareas: <strong>decidir entre opciones, evitar la venta sesgada y lograr adopción real</strong>.</div>
+        </div>
+      </div>
+
+      <div class="section-title" style="margin-top: 96px;">
+        <span class="eyebrow">Propuesta de valor</span>
+        <h2>Cuatro promesas concretas</h2>
+      </div>
+      <div class="promesas">
+        <div class="promesa">
+          <div class="promesa-num">1</div>
+          <h4>Diagnóstico inmersivo</h4>
+          <p>Antes de proponer cualquier solución entramos al negocio: hablamos con la gente, miramos circuitos reales, entendemos las restricciones culturales del cliente.</p>
+        </div>
+        <div class="promesa">
+          <div class="promesa-num">2</div>
+          <h4>Imparcialidad estructural</h4>
+          <p>No firmamos acuerdos comerciales con proveedores de soluciones enlatadas. Cualquier comisión nos sesgaría y rompería el activo central del modelo: la confianza.</p>
+        </div>
+        <div class="promesa">
+          <div class="promesa-num">3</div>
+          <h4>Evaluamos TODO el mercado</h4>
+          <p>Enlatado, desarrollo a medida, agente de IA o cambio de proceso. Respondemos caso por caso, no con un catálogo prearmado.</p>
+        </div>
+        <div class="promesa">
+          <div class="promesa-num">4</div>
+          <h4>Acompañamiento humano del cambio</h4>
+          <p>La mayoría de los proyectos PyME no fracasan por la tecnología sino por la adopción. Por eso casi todas nuestras intervenciones incluyen capacitación y monitoreo de uso real.</p>
+        </div>
+      </div>
+
+      <div class="section-title" style="margin-top: 96px;">
+        <span class="eyebrow">Foco vertical</span>
+        <h2>En tres frentes <span>complementarios</span></h2>
+        <p>Decidimos no atender cualquier necesidad. Nos especializamos en tres temas donde el conocimiento se acumula y se reutiliza de un cliente al siguiente.</p>
+      </div>
+      <div class="verticales-grid">
+        <div class="vertical">
+          <div class="vertical-tag">Vertical 1</div>
+          <h4>Mini apps PyME</h4>
+          <p>Procesos operativos repetitivos que hoy viven en planillas, chats, agendas de papel o mails. Stock con app móvil, turnos con recordatorios, órdenes de trabajo, formularios de pedidos, dashboards diarios.</p>
+        </div>
+        <div class="vertical">
+          <div class="vertical-tag">Vertical 2</div>
+          <h4>Agentes de IA y automatizaciones</h4>
+          <p>Chatbots sobre WhatsApp, OCR + clasificación de comprobantes, conciliaciones cruzadas entre eCommerce y banco, asistentes internos.</p>
+        </div>
+        <div class="vertical">
+          <div class="vertical-tag">Vertical 3</div>
+          <h4>Adopción de IA en el equipo</h4>
+          <p>Consultoría con entrega de solución, no capacitación. Armamos junto al equipo del cliente las skills/agentes de IA específicas que ese negocio necesita, y los acompañamos en el uso real.</p>
+        </div>
+      </div>
+
+      <div class="insight">
+        <div class="insight-eyebrow">Nuestro orden de evaluación</div>
+        <h4>Frente a una necesidad, así decidimos</h4>
+        <ol>
+          <li><strong>IA primero</strong> — vemos qué se puede resolver con una licencia ya disponible + skills propias.</li>
+          <li><strong>Enlatado o cambio de proceso</strong> — si la IA no aplica, evaluamos si lo resuelve un enlatado o un cambio de proceso.</li>
+          <li><strong>Desarrollo a medida como última opción</strong> — cuando aparece, no lo hacemos nosotros: acompañamos al cliente a contratarlo afuera para mantener la independencia.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================================================================== -->
+<!-- ============================ PAGE: MÉTODO ========================== -->
+<!-- ==================================================================== -->
+<main class="page" id="page-metodo">
+
+  <div class="page-header">
+    <div class="container">
+      <div class="title-decor"></div>
+      <span class="eyebrow">Método</span>
+      <h1>Del primer "hola" al <span>"lo estamos usando"</span></h1>
+      <p>Un recorrido de cinco pasos con punto de entrada de bajo riesgo. La PyME nos ve trabajar antes de comprometerse con un proyecto grande.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">Proceso</span>
+        <h2>Cinco pasos</h2>
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="step-num">1</div>
+          <div class="step-title">Reunión 30 min</div>
+          <div class="step-meta">Gratis · sin compromiso</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">2</div>
+          <div class="step-title">Muestra gratis</div>
+          <div class="step-meta">1 quick win en una semana</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">3</div>
+          <div class="step-title">Diagnóstico inmersivo</div>
+          <div class="step-meta">Pago · 2 a 4 semanas</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">4</div>
+          <div class="step-title">Matriz + roadmap</div>
+          <div class="step-meta">Evaluación caso por caso</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">5</div>
+          <div class="step-title">Implementación</div>
+          <div class="step-meta">+ capacitación al equipo</div>
+        </div>
+      </div>
+
+      <div class="section-title" style="margin-top: 96px;">
+        <span class="eyebrow">Modelo de ingresos</span>
+        <h2>No cobramos por hora. <span>Cobramos por valor</span></h2>
+        <p>Cada trabajo se cotiza con un importe total cerrado, definido por el valor que aporta. Cobrar por hora premia el tiempo dedicado, no el resultado.</p>
+      </div>
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Fuente</th>
+            <th>Descripción</th>
+            <th>Tipo de cobro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="source-name">Muestra gratis</td>
+            <td>Reunión exploratoria de 30 min + 1 quick win sin costo. Hook comercial de baja fricción.</td>
+            <td><span class="pill">USD 0 · CAC</span></td>
+          </tr>
+          <tr>
+            <td class="source-name">Diagnóstico inicial</td>
+            <td>Proyecto cerrado, 2 a 4 semanas. Entrega: matriz + roadmap concreto.</td>
+            <td><span class="pill">Proyecto cerrado</span></td>
+          </tr>
+          <tr>
+            <td class="source-name">Implementaciones</td>
+            <td>Una cotización cerrada por cada solución decidida tras el diagnóstico.</td>
+            <td><span class="pill">Producto cerrado</span></td>
+          </tr>
+          <tr>
+            <td class="source-name">Capacitaciones</td>
+            <td>Talleres por empresa de 2 a 8 hs, para grupos de hasta 15 personas.</td>
+            <td><span class="pill">Precio fijo por taller</span></td>
+          </tr>
+          <tr>
+            <td class="source-name">Acompañamiento</td>
+            <td>Paquete opcional post-implementación: revisión trimestral + soporte + 1 mini-iteración incluida.</td>
+            <td><span class="pill">Trimestral cerrado</span></td>
+          </tr>
+          <tr>
+            <td class="source-name">Referente técnico tercerizado</td>
+            <td>Abono mensual de acompañamiento estratégico para clientes sin área de sistemas formal.</td>
+            <td><span class="pill recurring">Abono mensual</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="cost-box">
+        <h4>Estructura de costos: tiempo, no dinero</h4>
+        <p>El recurso crítico al inicio es tiempo de los socios, no capital. Trabajamos sin oficina, con herramientas de software (Claude, ChatGPT, Cursor, Notion, HubSpot gratuito) y partners pagados por uso. La rentabilidad escala cuando reutilizamos componentes entre clientes del mismo vertical.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================================================================== -->
+<!-- ========================== PAGE: OPERACIÓN ========================= -->
+<!-- ==================================================================== -->
+<main class="page" id="page-operacion">
+
+  <div class="page-header">
+    <div class="container">
+      <div class="title-decor"></div>
+      <span class="eyebrow">Operación</span>
+      <h1>Cómo medimos y <span>sostenemos el día a día</span></h1>
+      <p>Dos herramientas complementarias: los KPIs monitorean la salud continua del negocio; los OKRs marcan a dónde queremos llegar cada año. Y cinco actividades que sostienen la operación cotidiana.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">Métricas</span>
+        <h2>KPIs operativos <span>+ OKRs anuales</span></h2>
+      </div>
+
+      <div class="dashboard-container">
+        <h4>Dashboard de KPIs · Salud operativa continua</h4>
+        <img src="img/adapta_kpi_dashboard_final.png" alt="Dashboard KPIs">
+      </div>
+
+      <div class="dashboard-container" style="margin-top: 24px;">
+        <h4>Dashboard de OKRs · Objetivos anuales</h4>
+        <img src="img/adapta_okr_dashboard.png" alt="Dashboard OKRs">
+      </div>
+
+      <div class="section-title" style="margin-top: 96px;">
+        <span class="eyebrow">Actividades clave</span>
+        <h2>Cinco actividades que <span>sostienen la operación</span></h2>
+        <p>Cubren las cuatro dimensiones que requiere el modelo: mantener el servicio funcionando, mejorarlo, atender consultas y analizar resultados.</p>
+      </div>
+      <div class="activities">
+        <div class="activity">
+          <div class="activity-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          </div>
+          <h4>Vigilancia tecnológica e I+D</h4>
+          <p>Un día semanal protegido por socio para evaluar herramientas nuevas, leer documentación de APIs y probar tecnologías emergentes.</p>
+        </div>
+        <div class="activity">
+          <div class="activity-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M12 4h9M4 8l4-4-4-4"/></svg>
+          </div>
+          <h4>Gestión del pipeline comercial</h4>
+          <p>Desde el primer contacto hasta la firma del diagnóstico. CRM liviano al llegar a unos 10 clientes activos.</p>
+        </div>
+        <div class="activity">
+          <div class="activity-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          </div>
+          <h4>Ejecución de proyectos contratados</h4>
+          <p>Coordinación con el cliente, con partners cuando aplica, y aseguramiento de calidad. Cada proyecto tiene un socio owner y un check-in semanal interno.</p>
+        </div>
+        <div class="activity">
+          <div class="activity-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h4>Capacitación y acompañamiento del cambio</h4>
+          <p>Talleres por empresa, construcción asistida de skills de IA con el equipo del cliente, monitoreo de adopción real.</p>
+        </div>
+        <div class="activity">
+          <div class="activity-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+          </div>
+          <h4>Análisis y assets reutilizables</h4>
+          <p>Revisión mensual del dashboard, identificación de desvíos y decisión sobre qué prompts, plantillas y agentes incorporar a la biblioteca interna.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================================================================== -->
+<!-- ========================== PAGE: ESTRATEGIA ======================== -->
+<!-- ==================================================================== -->
+<main class="page" id="page-estrategia">
+
+  <div class="page-header">
+    <div class="container">
+      <div class="title-decor"></div>
+      <span class="eyebrow">Estrategia</span>
+      <h1>Tres supuestos, tres decisiones, <span>un horizonte</span></h1>
+      <p>Cada modelo de negocio tiene supuestos que todavía no están confirmados. Los medimos con criterios concretos y umbrales de decisión.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">Visión a futuro</span>
+        <h2>Tres caminos de evolución</h2>
+        <p>Ninguna es una extensión "más de lo mismo": cada una cambia al menos un pilar del negocio actual.</p>
+      </div>
+      <div class="evoluciones">
+        <div class="evolucion">
+          <div class="evolucion-tag">Evolución 1</div>
+          <h4>Productización de agentes</h4>
+          <p>Los agentes armados para cada cliente se vuelven productos reutilizables con configuración inicial paga.</p>
+          <div class="change">
+            <strong>Qué tiene que cambiar</strong>
+            Infra multi-tenant · Soporte escalable · MRR/churn como métricas · Product Manager separado.
+          </div>
+        </div>
+        <div class="evolucion">
+          <div class="evolucion-tag">Evolución 2</div>
+          <h4>Línea formativa propia</h4>
+          <p>Cursos asincrónicos sobre adopción de IA en PyMEs. Motor comercial distinto: inbound en lugar de venta consultiva.</p>
+          <div class="change">
+            <strong>Qué tiene que cambiar</strong>
+            Motor de inbound · Plataforma LMS · Métricas nuevas (CAC, completion rate) · Ticket bajo/volumen alto.
+          </div>
+        </div>
+        <div class="evolucion">
+          <div class="evolucion-tag">Evolución 3</div>
+          <h4>Expansión geográfica</h4>
+          <p>Replicar a otras ciudades y países una vez consolidado el modelo estándar de intervención.</p>
+          <div class="change">
+            <strong>Qué tiene que cambiar</strong>
+            Manual operativo del modelo · Programa interno de formación · Calidad cruzada entre regiones.
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title" style="margin-top: 96px;">
+        <span class="eyebrow">Validación</span>
+        <h2>Tres supuestos críticos</h2>
+      </div>
+      <div class="supuestos">
+        <div class="supuesto">
+          <div class="supuesto-num">01</div>
+          <div class="supuesto-label">Supuesto</div>
+          <h4>Las PyMEs pagan por un diagnóstico antes de saber qué van a contratar</h4>
+          <div class="validation"><strong>Cómo lo validamos:</strong> ofrecer diagnósticos pagos a 8-10 PyMEs cercanas. Si menos del 30 % acepta, cambiamos el modelo de entrada.</div>
+        </div>
+        <div class="supuesto">
+          <div class="supuesto-num">02</div>
+          <div class="supuesto-label">Supuesto</div>
+          <h4>La verticalidad cubre el 70 % de las necesidades reales</h4>
+          <div class="validation"><strong>Cómo lo validamos:</strong> hacer 5 diagnósticos reales y mapear el porcentaje. Si cae menos del 50 %, agregamos o cambiamos un vertical.</div>
+        </div>
+        <div class="supuesto">
+          <div class="supuesto-num">03</div>
+          <div class="supuesto-label">Supuesto</div>
+          <h4>Las PyMEs aceptan cotización por valor cerrado, no cobro por hora</h4>
+          <div class="validation"><strong>Cómo lo validamos:</strong> medir tasa de cierre y objeciones en las primeras 3-5 propuestas. Si más del 50 % pide desglose horario, evaluamos modelo híbrido.</div>
+        </div>
+      </div>
+
+      <div class="section-title" style="margin-top: 96px;">
+        <span class="eyebrow">Decisiones estratégicas</span>
+        <h2>Tres decisiones con <span>trade-off explícito</span></h2>
+      </div>
+      <div class="decisiones">
+        <div class="decision">
+          <div class="decision-num">DECISIÓN 1</div>
+          <h4>Foco vertical estricto</h4>
+          <p>No abrimos un cuarto vertical hasta consolidar los tres iniciales. Rechazamos proyectos fuera de foco aun si son rentables.</p>
+          <div class="decision-trade">
+            <div><span class="renuncia">Renuncia:</span> ingresos puntuales.</div>
+            <div><span class="ganancia">Ganancia:</span> reutilización con masa crítica.</div>
+          </div>
+        </div>
+        <div class="decision">
+          <div class="decision-num">DECISIÓN 2</div>
+          <h4>Crecimiento con ingresos propios</h4>
+          <p>Aportes propios de los socios + reinversión. No buscamos inversión externa.</p>
+          <div class="decision-trade">
+            <div><span class="renuncia">Renuncia:</span> aceleración por capital.</div>
+            <div><span class="ganancia">Ganancia:</span> autonomía + imparcialidad sostenible.</div>
+          </div>
+        </div>
+        <div class="decision">
+          <div class="decision-num">DECISIÓN 3</div>
+          <h4>Escalable por replicación</h4>
+          <p>Mar del Plata es el piloto. El modelo está pensado para replicarse a otras ciudades y países, no como producto digital.</p>
+          <div class="decision-trade">
+            <div><span class="renuncia">Renuncia:</span> velocidad inicial.</div>
+            <div><span class="ganancia">Ganancia:</span> control de calidad y expansión real.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 56px;">
+        <div class="timeline">
+          <h3>Línea de tiempo proyectada</h3>
+          <div class="subtitle">El recorrido previsto del negocio en sus primeros años. Es una hipótesis, no un compromiso.</div>
+          <div class="timeline-row">
+            <div class="tl-item active">
+              <div class="tl-dot">AHORA</div>
+              <div class="tl-year">Año 0-1</div>
+              <div class="tl-title">Arranque + piloto</div>
+              <div class="tl-desc">3 socios, bootstrapping. Validar los 3 supuestos con 5-8 clientes.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">META</div>
+              <div class="tl-year">Año 1-2</div>
+              <div class="tl-title">Ramen profitability</div>
+              <div class="tl-desc">10+ clientes activos. Primeros assets reutilizables consolidados.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">+</div>
+              <div class="tl-year">Año 2-3</div>
+              <div class="tl-title">Modelo validado</div>
+              <div class="tl-desc">20+ clientes. Validado en al menos 2 verticales. Primer junior.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot">↑</div>
+              <div class="tl-year">Año 3+</div>
+              <div class="tl-title">Productización + expansión</div>
+              <div class="tl-desc">Lanzar SaaS. Ley de Economía del Conocimiento. Otras ciudades.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================================================================== -->
+<!-- ========================= PAGE: COMPROMISO ========================= -->
+<!-- ==================================================================== -->
+<main class="page" id="page-compromiso">
+
+  <div class="page-header">
+    <div class="container">
+      <div class="title-decor"></div>
+      <span class="eyebrow">Compromiso</span>
+      <h1>Ética e impacto social <span>del servicio</span></h1>
+      <p>Un servicio de consultoría toma decisiones éticas todo el tiempo. Asumimos esa responsabilidad en cinco frentes concretos.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>Imparcialidad estructural</h4>
+          <p>Cero acuerdos comerciales con proveedores. Criterio del diario: si no puede justificarse abiertamente, no es sostenible.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <h4>Privacidad de datos</h4>
+          <p>Alineados con Ley 25.326 y GDPR. Minimización, NDA por proyecto, no reutilización, devolución al cierre.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          </div>
+          <h4>IA responsable</h4>
+          <p>Supervisión humana, explicabilidad, política interna escrita de tres niveles: qué está bien, qué requiere cuidado y qué no.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h4>Ecosistema local</h4>
+          <p>Transferencia de conocimiento, formación de talento local, articulación con ATICMA y Mar del Plata Ciudad del Conocimiento.</p>
+        </div>
+
+        <!-- Pilar destacado con la frase mandatoria -->
+        <div class="pillar featured">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div class="pillar-content">
+            <h4>Automatización con criterio social</h4>
+            <p>Distinguimos amplificación (liberar tiempo para trabajo de mayor valor) de desplazamiento (reemplazar el puesto). Reemplazar completamente al equipo por sistemas automáticos casi nunca es la mejor jugada, ni comercial ni éticamente.</p>
+            <div class="pillar-quote">"Asesoramos a la empresa en cómo recalificar al personal y reinsertarlo en la empresa para minimizar el desplazamiento"</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 80px;">
+        <div class="piso-etico">
+          <div class="content">
+            <h3>El piso ético del servicio</h3>
+            <p class="intro">Las tres preguntas antes de cualquier decisión importante:</p>
+            <ol>
+              <li>¿Esta recomendación se sostiene si la justificamos abiertamente frente al cliente y su equipo?</li>
+              <li>¿Quién gana y quién pierde con esta decisión, y está alineado con lo que el cliente busca?</li>
+              <li>¿Podríamos defenderla dentro de cinco años, frente al cliente, su equipo y nosotros mismos?</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================================================================== -->
+<!-- ========================== PAGE: CONTACTO ========================== -->
+<!-- ==================================================================== -->
+<main class="page" id="page-contacto">
+
+  <section style="padding: 96px 0 128px;">
+    <div class="container">
+      <div class="contact-box">
+        <div class="eyebrow-c">Hablemos</div>
+        <h2>El primer paso es siempre <span>gratis</span></h2>
+        <p>Una reunión de 30 minutos para entender qué necesita tu negocio. Si te interesa, te llevamos una muestra gratis en una semana. Si no, queda como charla.</p>
+        <a href="mailto:correomagui@gmail.com" class="contact-cta">
+          correomagui@gmail.com
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="contact-meta">
+          <div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Mar del Plata, Argentina
+          </div>
+          <div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><circle cx="17.5" cy="6.5" r="0.5"/></svg>
+            @adaptadigital
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="container">
+    <p><strong>Adapta Digital</strong> — Consultora de transformación digital para PyMEs no tecnológicas · Mar del Plata, Argentina</p>
+    <p style="margin-top: 8px; opacity: 0.7;">Trabajo Práctico Integrador · Gestión de Empresas de TI · Universidad FASTA · 2026</p>
+  </div>
+</footer>
+
+<script>
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + pageId).classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('data-page') === pageId) link.classList.add('active');
+  });
+  window.scrollTo({ top: 0, behavior: 'auto' });
+  history.replaceState(null, '', '#' + pageId);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash.substring(1);
+  if (hash && document.getElementById('page-' + hash)) showPage(hash);
+  else showPage('home');
+});
+
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 20) navbar.classList.add('scrolled');
+  else navbar.classList.remove('scrolled');
+});
+
+document.addEventListener('keydown', (e) => {
+  const pages = ['home', 'nosotros', 'servicios', 'metodo', 'operacion', 'estrategia', 'compromiso', 'contacto'];
+  const current = window.location.hash.substring(1) || 'home';
+  const idx = pages.indexOf(current);
+  if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+    if (idx < pages.length - 1) showPage(pages[idx + 1]);
+  } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+    if (idx > 0) showPage(pages[idx - 1]);
+  } else if (e.key === 'Home') {
+    showPage('home');
+  }
+});
+</script>
+
+</body>
+</html>
