@@ -2,7 +2,7 @@
 
 Sitio institucional del proyecto **Adapta Digital**, consultora de transformación digital para PyMEs no tecnológicas basada en Mar del Plata.
 
-Trabajo Práctico Integrador · Gestión de Empresas de TI · Universidad FASTA · 2026
+Trabajo Práctico Integrador · Gestión de Empresas de TI · Universidad FASTA · Julio 2026
 Rossello, María Magdalena
 
 ## Contenido
