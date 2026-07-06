@@ -14,4 +14,4 @@ Rossello, María Magdalena
 ## Uso
 
 Abrí `index.html` en cualquier navegador para explorar el sitio institucional.
-Abrí `presentacion.html` en pantalla completa (F11) para la presentación oral — navegación con flechas del teclado (← →) o click en el menú.
+Abrí `presentacion.html` en pantalla completa (F11) para la presentación oral - navegación con flechas del teclado (← →) o click en el menú.
