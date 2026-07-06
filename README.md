@@ -7,9 +7,9 @@ Rossello, María Magdalena
 
 ## Contenido
 
-- **`index.html`** — Sitio institucional completo (versión para lectura)
-- **`presentacion.html`** — Versión reducida para presentación oral en vivo
-- **`img/`** — Imágenes, logos y dashboards del sitio
+- **`index.html`** - Sitio institucional completo (versión para lectura)
+- **`presentacion.html`** - Versión reducida para presentación oral en vivo
+- **`img/`** - Imágenes, logos y dashboards del sitio
 
 ## Uso
 
